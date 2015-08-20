@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.logout{
+  font-size: 15px;
+  text-align:right;
+}
