@@ -1,3 +1,38 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article{
+  margin: 40px 0;
+  //height: 150px;
+  //border: 1px solid #333;
+  position:relative;
+  margin: 1%;
+}
+
+.detail{ /*投稿者など */
+  background-color: #ffff99;
+  color: #000;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 4px;
+}
+
+.comment{
+  background-color: #ffffcc;
+  color: #000;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  height: 4em;
+}
+
+.comment p{
+  margin: 0;
+}
+
+.posted_date{
+  background-color: #ffffcc;
+  padding-left: 70%;
+}
