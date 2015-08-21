@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    @message.user_id = current_user.id
 
     respond_to do |format|
       if @message.save
@@ -56,9 +57,10 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    team_id = @message.team_id
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
+      format.html { redirect_to team_messages_url(team_id: team_id), notice: 'Message was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
