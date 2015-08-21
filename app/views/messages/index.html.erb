@@ -7,15 +7,31 @@
 <body>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Messages</h1>
 
 
+<div class="pagetop_form">
+  <div class="tag_form"><!--タグ検索フォーム-->
+<!--
+<div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="タグ検索">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div> --> <!-- /input-group -->
+  <!--</div>--><!-- /.col-lg-6 -->
+</div>
+<div class="create_form"> <!--メッセージ作成フォーム-->
 <div class="actions"><a href="messages/new.html"class="btn btn-primary btn-lg active" role="button">
-message
-</a></div>
+メッセージ作成
+</a></div></div>
+<div class="date_form"><!--日時入力フォーム-->
+<!--<%= datetime_select :page, :updated_at , :discard_minute=>true, :discard_hour=>true%>
+</div>-->
+</div>
 
-<div class="article">
-  <% @messages.each do |message| %>
+  <% @messages.reverse_each do |message| %>
+  <div class="article">
   <div class="detail">
     タグ:<td><%= message.tag %></td>
   </div>
@@ -25,11 +41,17 @@ message
   <div class="posted_date">
     date:
   </div>
+  </div>
   <!--<%= link_to 'Edit', edit_message_path(message) %> -->
 <% end %>
-</div>
 
-<%= link_to 'New Message', new_team_message_path(team_id: @team.id) %>
+<!-- <%= link_to 'New Message', new_team_message_path(team_id: @team.id) %> -->
+
+<div class="top_button">
+<div class="actions"><a href="messages"class="btn btn-primary btn-lg active" role="button">
+上へ
+</a></div>
+</div>
 
 </body>
 <!--
