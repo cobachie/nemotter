@@ -1,7 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+
+<body>
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Messages</h1>
 
+
+<div class="actions"><a href="messages/new.html"class="btn btn-primary btn-lg active" role="button">
+message
+</a></div>
+
+<div class="article">
+  <% @messages.each do |message| %>
+  <div class="detail">
+    タグ:<td><%= message.tag %></td>
+  </div>
+  <div class="comment"><p>
+    <%= message.body %>
+  </p></div>
+  <div class="posted_date">
+    date:
+  </div>
+  <!--<%= link_to 'Edit', edit_message_path(message) %> -->
+<% end %>
+</div>
+
+<%= link_to 'New Message', new_team_message_path(team_id: @team.id) %>
+
+</body>
+<!--
 <table>
   <thead>
     <tr>
@@ -27,7 +58,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Message', new_team_message_path(team_id: @team.id) %>
+-->
