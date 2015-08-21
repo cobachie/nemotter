@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:index, :new, :show]
 
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @messages = Message.where(team_id: params[:team_id])
   end
 
   # GET /messages/1
@@ -14,7 +15,8 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = Message.new
+    #@message = Message.new
+    @message = @team.messages.build
   end
 
   # GET /messages/1/edit
@@ -65,6 +67,11 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+    end
+
+    def set_team
+      team_id = params[:team_id] || params[:message][:team_id] rescue 1
+      @team = Team.find(team_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
