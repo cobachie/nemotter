@@ -30,8 +30,10 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
 
     respond_to do |format|
+
+        team_id = @message.team_id
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to team_messages_url(team_id: team_id), notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
