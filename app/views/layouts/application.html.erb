@@ -38,11 +38,11 @@
             <!-- li role="presentation" class="active"><a href="#">Home</a></li>
              <li role="presentation"><a href="#">Profile</a></li>
              <li role="presentation"><a href="#">Messages</a></li -->
-
+             <% if user_signed_in? %>
              <% Team.all.each do |teams| %>
                  <li role="presentation"><a href="#"><%= teams.name %>&nbsp; &nbsp; &nbsp; </a></li>
              <% end %>
-
+             <% end %>
         　</ul>
 
        </div>
