@@ -1,33 +1,56 @@
 <%= form_for(shallow_args(@team,@message)) do |f| %>
   <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
 
-      <ul>
+    <ul>
       <% @message.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.label :team_id %><br>
+    <%= f.number_field :team_id %>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        投稿するチーム
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu">
+        <% Team.all.each do |teams|  %>
+        <li><a href="#" data-value="teams.name"><%= teams.name %></a></li>
+      </ul>
+      <% end %>
+      <input type="hidden" name="dropdown-value" value="">
+    </div>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
   </div>
   <div class="field">
     <%= f.label :tag %><br>
     <%= f.text_field :tag %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :body %><br>
+    <%= f.text_area :body,:size=>"60x15" %>
   </div>
-  <div class="field">
-    <%= f.label :team_id %><br>
-    <%= f.hidden_field :team_id %>
+  <div class="form-group">
+    <input type="file" id="exampleInputFile">
+    <!--<p class="help-block">Example block-level help text here.</p>-->
   </div>
+  <%= f.hidden_field :team_id %>
+
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+  <% end %>
