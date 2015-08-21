@@ -30,7 +30,7 @@
 </div>-->
 </div>
 
-  <% @messages.each do |message| %>
+  <% @messages.reverse_each do |message| %>
   <div class="article">
   <div class="detail">
     タグ:<td><%= message.tag %></td>
